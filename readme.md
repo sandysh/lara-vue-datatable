@@ -15,7 +15,7 @@
 
         <TableLength :options="tableLength" @paginate="getUsers()"/>
               <search @get-users="getUsers($event)"></search>
-              <sandesh-vue-table
+              <data-table
                   :dataList="users"
                   :columns="columns"
                   :dbcolumns="dbcolumns"
@@ -33,7 +33,7 @@
 
             ]"
               >
-              </sandesh-vue-table>
+              </data-table>
 
               <Pagination :pagination="users"
                           @paginate="getUsers()"
@@ -60,7 +60,7 @@
                 methods: {
                     getUsers(search) {
                           console.log('search data', search);
-                          axios.get('http://neomeet.local/api/users?per_page='+this.tableLength.default+'&page='
+                          axios.get('your api url?per_page='+this.tableLength.default+'&page='
                               +this.users.current_page+'&searchText='+search)
                               .then((response) => {
                                   this.users = response.data;
